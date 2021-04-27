@@ -11,18 +11,18 @@
 
 </head>
 <body>
-  <div class="videoDanmu"  style="position:relative;align-items:center;width: 100%;height: 1080px;">
-    <video id="loopVideo"  controls loop  webkit-playsinline playsinline style="position: absolute">
+  <div class="videoDanmu" >
+    <video id="loopVideo"  controls loop  webkit-playsinline playsinline>
       <source src="video/1.mp4" type="video/mp4"></source>
     </video>
-    <video id="camera" style="display:none;position: absolute" autoplay >
+    <video id="camera" autoplay >
       <canvas id="canvas"></canvas>
     </video>
 
-    </div id="screen"style="display:none;position: absolute">
+    </div id="screen">
       <!-- 场景 1 --> 
       <div id="part1" style="display:none">
-        <div class="danmuBox">
+        <div class="danmuBox" id="danmuBox" style="display: none;">
           <marquee class="danmu1-item"  scrollAmount=5 direction=left>
             <div class="danmu">
             <img  src="images/scene1/3.png" alt="">
@@ -69,13 +69,13 @@
         </div>
           
           <!-- 黑色遮罩 -->
-        <div class="blalckMask">
+        <div class="blalckMask"  id="blalckMask" style="display: none;">
           <div class="canvas"></div>
           <span>打开你所赞同的弹幕试试吧</span>
         </div>
 
             <!-- //按顺序显示 -->
-        <div class="sendDanmu">
+        <div class="sendDanmu" id="sendDanmu"  style="display: none;">
           <div class="danmu2-item" onclick="addEmotions">
             <span>二刷</span> 
             <br>
@@ -88,7 +88,6 @@
              <span>清华大学美术学院A座</span> 
              <br>
              <div class="emotion">
-          
             </div>
           </div>
          
@@ -422,11 +421,6 @@
       </div>
     </div>
   </div>
-        
-        
-        
-  
-   
           
          <!-- 弹幕方案二   -->
        <!-- 等待5-10s -->
@@ -440,20 +434,12 @@
           <img src="images/scene1/1.png" alt="">
         </div> -->
   
-
-
-
-
-
   <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
   <script src="js/velocity.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/velocity.ui.min.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="js/velocity.js"></script> -->
   <!-- <script type="text/javascript" src="dist/js/jquery.barrager.js"></script> -->
   <script>
-
-
-
     //访问摄像头
     const video = document.getElementById('camera');
     const loopVideo = document.getElementById('loopVideo');
@@ -461,56 +447,67 @@
     const width =loopVideo.width;
     const height =loopVideo.height;
     let isMoveFlag = true ; // 鼠标移动
-    let closeCarmertimer = null ;  // 摄像头打开以后，是否需要关闭标识符
+    let closeCarmertimer = null ;  // 摄像头打开以后，是否需要摄像头关闭标识符
+    let number = 0 ;  // 计时，成功打开摄像头以后
+    let numberTimer = ""  // 计时器id
 
-    // 点击打开摄像头
-    loopVideo.addEventListener('click',function () {
-      getUserMedia()
-    })
-
-
-
-
-    //监听播放时间
     //使用事件监听方式捕捉事件
     var part1=document.querySelector('#part1');
     var part2=document.querySelector('#part2');
     var part3=document.querySelector('#part3');
     var part4=document.querySelector('#part4');
     var part5=document.querySelector('#part5');
+    var danmuBox=document.querySelector('#danmuBox');
+    var blalckMask=document.querySelector('#blalckMask');
+    var sendDanmu=document.querySelector('#sendDanmu');
     var showCountDownID = ''
-    // video.addEventListener("timeupdate",function(){
-    //   console.log(3333)
-    //     var timeDisplay;
-    // 	//用秒数来显示当前播放进度
-    // 	timeDisplay = Math.floor(video.currentTime);
-    // 	console.log(Math.floor(video.currentTime))
-    //     //当视频播放到 1s的时候做处理
-    // 	if(timeDisplay >=1&&timeDisplay <=15){
-    // 	        //处理代码
-    //           //part1
-    //       part1.style.display="block";
-    //       // part4
-    //       part4.style.display='block';
-    //       var quit=document.querySelector('#quit')
-    //       quit.addEventListener('click',function () {
-    //         closeAngryBox();
-    // })
-    //     showCountDownID = setInterval("showCountDown()", 1000);
-    // 	}
-    // },false);
+
+
+    // window.onload = function(){
+    //   clearInterval(numberTimer);
+    //   doRepeatDanmu()
+    // }
+    // 点击打开摄像头
+    loopVideo.addEventListener('click',function () {
+      getUserMedia()
+    })
     // 打开视频第一步
-    function part1Start(){
+    function part1StartByOne(){
       part1.style.display="block";
-          // part4
-      // part4.style.display='block';
+      danmuBox.style.display="block";
+    }
+    function part1StartByTwo(){
+      part1.style.display="block";
+      danmuBox.style.display="none";
+      blalckMask.style.display="block";
+    }
+    function part1StartByThree(){
+      part1.style.display="block";
+      blalckMask.style.display="none";
+      sendDanmu.style.display="block";
+    }
+
+    function part2Start(params) {
+      part1.style.display="none";
+      part2.style.display="block";
+    }
+    function part3Start(params) {
+      part2.style.display="none";
+      part3.style.display="block";
+    }
+    function part4Start(params) {
+      part3.style.display="none";
+      part4.style.display="block";
       var quit=document.querySelector('#quit')
       quit.addEventListener('click',function () {
         closeAngryBox();
       })
       showCountDownID = setInterval("showCountDown()", 1000);
     }
-
+    function part5Start(params) {
+      part4.style.display="none";
+      part5.style.display="block";
+    }
     var mediaStreamTrack;
     carmerState1 =0;
     
@@ -525,50 +522,57 @@
       
     }
 
+    function doRepeatDanmu(){
+      numberTimer = setInterval(() => {
+        number = number + 1
+        if(0< number && number<5){
+          // 第一个场景
+          part1StartByOne()
+        }else if(6< number && number<10){
+          console.log(123)
+          // 第二个场景
+          part1StartByTwo()
+        }else if( 11< number && number<20){
+          // 第三个场景
+          part1StartByThree()
+        }else if(21< number && number<30){
+          part2Start()
+        }else if(31< number && number<40){
+          part3Start()
+        }else if(41< number && number<50){
+          part4Start()
+        }else if(51< number && number<60){
+          part5Start()
+        }
+      }, 1000);
+    }
 
     function success(stream) {
       // 清空定时器
       clearInterval(closeCarmertimer)
-        video.srcObject = stream;
-          mediaStreamTrack = stream;
-          // 摄像头状态 ，已经被打开
-          carmerState1 =1;
-          video.play();
-          loopVideo.pause();
-          video.style.display='';
+      video.srcObject = stream;
+        mediaStreamTrack = stream;
+        // 摄像头状态 ，已经被打开
+        carmerState1 =1;
+        video.play();
+        loopVideo.pause();
+        video.style.display='';
+      
+        loopVideo.style.display='none';
+        video.load();
         
-          loopVideo.style.display='none';
-          video.load();
-          // 打开part1
-          part1Start()
-          // 5s后关闭part1
-          setTimeout(() => {
-            part1.style.display="none";
-            part2.style.display="block";
-          }, 6000);
-          setTimeout(() => {
-            part2.style.display="none";
-            part3.style.display="block";
-          }, 10000);
-          setTimeout(() => {
-            part3.style.display="none";
-            part4.style.display="block";
-          }, 15000);
-          setTimeout(() => {
-            part4.style.display="none";
-            part5.style.display="block";
-          }, 20000);
-          setTimeout(() => {
-            part5.style.display="none";
-          }, 25000);
-          // 监听鼠标是否移动
-          closeCarmertimer = setInterval(() => {
-            if(isMoveFlag ){
-              isMove()
-            }else{
-              clearInterval(closeCarmertimer)
-            }
-          }, 1000);
+        // 弹幕播放
+        clearInterval(numberTimer);
+        doRepeatDanmu()
+
+        // 监听鼠标是否移动
+        closeCarmertimer = setInterval(() => {
+          if(isMoveFlag ){
+            isMove()
+          }else{
+            clearInterval(closeCarmertimer)
+          }
+        }, 10000);
       }
       function error(error) {
           console.log(error);
@@ -577,14 +581,14 @@
       function isMove(){
         timer = null;
         window.onmousemove = function(){
-            // 移动时
-            isMoveFlag = true;
-            clearTimeout(timer);
-            timer = setTimeout(function(){
-               // 静止后
-              closeMedia()
-              isMoveFlag = false;
-            },8000); //10s
+          // 移动时
+          isMoveFlag = true;
+          clearTimeout(timer);
+          timer = setTimeout(function(){
+              // 静止后
+            closeMedia()
+            isMoveFlag = false;
+          },8000); //10s
         }
       }
 
@@ -606,6 +610,7 @@
         loopVideo.play();
         loopVideo.style.display='block';
         video.style.display='none';
+        clearInterval(numberTimer)
      }
 
 

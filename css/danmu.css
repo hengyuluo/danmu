@@ -7,6 +7,23 @@ body， #screen {
   width: 100%;
   height: 100%;
 }
+.videoDanmu{
+  position:relative;
+  align-items:center;
+  width: 100%;
+  height: 1080px;
+}
+#loopVideo{
+  position: absolute
+}
+#camera{
+  position: absolute;
+  display:none;
+}
+#screen{
+  position: absolute;
+  display:none;
+}
 #part1,
 #part2,
 #part3，#part4 {
