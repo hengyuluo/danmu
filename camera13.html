@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>弹幕施工中</title>
+  <link  rel="stylesheet" href="css/danmu.css" type="text/css">
+
+  <!-- 引入静态动画文件 -->
+  <!-- velocity.js -->
+
+</head>
+<body>
+  <div class="videoDanmu"  style="position:relative;align-items:center;width: 100%;height: 1080px;">
+    <video id="loopVideo"  controls loop  webkit-playsinline playsinline style="position: absolute">
+      <source src="video/1.mp4" type="video/mp4"></source>
+    </video>
+    <video id="camera" style="display:none;position: absolute" autoplay >
+      <canvas id="canvas"></canvas>
+    </video>
+
+    </div id="screen"style="display:none;position: absolute">
+      <!-- 场景 1 --> 
+      <div id="part1" style="display:none">
+        <div class="danmuBox">
+          <marquee class="danmu1-item"  scrollAmount=5 direction=left>
+            <div class="danmu">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            </div>
+            <br>
+            <div class="danmu">
+              <span>
+                我在清华大学美术学院A座
+                <img  src="images/scene1/4.png" alt=""direction=left>
+              </span>
+            </div>
+          </marquee>
+
+          <marquee class="danmu1-item"   scrollAmount=6 loop="2" direction=left>
+            <div class="danmu">
+              <img  src="images/scene1/3.png" alt="">
+              <img  src="images/scene1/3.png" alt="">
+              <img  src="images/scene1/3.png" alt="">
+            </div>
+            <br />
+          </marquee>
+    
+          <marquee class="danmu1-item"  scrollAmount=7 loop="2" direction=left>
+            <div class="danmu">
+              我在清华大学美术学院a座
+              <img  src="images/scene1/4.png" alt="">
+            </div>
+            <br />
+          </marquee>
+    
+          <marquee class="danmu1-item" scrollAmount=8  direction=left> 
+            <div class="danmu">
+              你好你好你好!
+              <img  src="images/scene1/1.png" alt="">
+            </div>
+            <div class="danmu"> 
+              这个作品真棒
+              <img  src="images/scene1/1.png"style="height: 65px;" alt="">
+            </div>
+            <br />
+          </marquee>
+        </div>
+          
+          <!-- 黑色遮罩 -->
+        <div class="blalckMask">
+          <div class="canvas"></div>
+          <span>打开你所赞同的弹幕试试吧</span>
+        </div>
+
+            <!-- //按顺序显示 -->
+        <div class="sendDanmu">
+          <div class="danmu2-item" onclick="addEmotions">
+            <span>二刷</span> 
+            <br>
+            <div class="emotion">
+              <img src="images/scene1/5.png" alt="">
+            </div>
+          </div>
+
+          <div class="danmu2-item" id="danmu3" onclick="addEmotions">
+             <span>清华大学美术学院A座</span> 
+             <br>
+             <div class="emotion">
+          
+            </div>
+          </div>
+         
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>好美啊</span> 
+            <br>
+            <div class="emotion">
+              <img  src="images/scene1/4.png" alt="">
+            </div>
+          </div>
+          
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>丑死了</span> 
+            <br>
+            <div class="emotion">
+              <img  src="images/scene1/4.png" alt="">
+            </div>
+          </div>
+
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>好美啊</span> 
+            <br>
+            <div class="emotion">
+            <img src="images/scene1/5.png" alt="">
+            </div>
+          </div>
+          
+
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>好美啊</span> 
+            <br>
+            <div class="emotion">
+              <img src="images/scene1/5.png" alt="">
+              </div>
+          </div>
+
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>好美啊</span> 
+            <br>
+            <div class="emotion">
+              <img src="images/scene1/5.png" alt="">
+              </div>
+          </div>
+
+          <div class="danmu2-item"  onclick="addEmotions">
+            <span>好美啊</span> 
+            <br>
+            <div class="emotion">
+              <img src="images/scene1/5.png" alt="">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 场景2 -->
+      <div id="part2"style="display:none">
+
+        <div id="greenBox"  style="position:absolute;">
+          <!-- 点击发送表情 -->
+          <marquee class="danmu1-item" scrollAmount=5 direction=left>
+            <div class="danmu">
+            <img  src="images/scene1/5.png" alt="">
+            <img  src="images/scene1/5.png" alt="">
+            <img  src="images/scene1/5.png" alt="">
+            </div>
+            <br>
+            <div class="danmu">
+              <span>
+                青青草原哈哈哈哈哈
+                <img  src="images/scene1/5.png" alt=""direction=left>
+              </span>
+            </div>
+          </marquee>
+          <marquee class="danmu1-item"  scrollAmount=5 direction=left>
+            <div class="danmu">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            </div>
+            <br>
+            <div class="danmu">
+              <span>
+                我在清华大学美术学院A座
+                <img  src="images/scene1/4.png" alt=""direction=left>
+              </span>
+            </div>
+          </marquee>
+  
+          <!-- 播放绿头音频 -->
+          <audio src=""></audio>
+          
+          <div id="dialog">
+            <span>有661人</span>
+            <span>认为此刻绿的发光</span>
+            <!-- <img src="images/scene2/2.png" alt=""> -->
+          </div>
+          <div id="greenButton"  >
+            <!-- 点击添加动态效果冒出对话框css -->
+            <div></div>
+            
+            <img id="greenHead"src="images/scene2/3.png" alt="">
+
+          </div>
+          <div class="blalckMask" style="display: none;"  >
+            <!-- 曲线 -->
+            <div class="canvas"></div>
+          
+             试试双击发送吧
+          </div>
+          <!-- 点击后飘出对话框，已发送 -->
+          <div id="greenmask"></div>
+        </div>
+      </div>
+
+      <!-- 场景3 -->
+      <div id="part3"style="display:none">
+
+        <div class="danmuBox" style="position: relative;" >
+          <marquee class="danmu1-item"  scrollAmount=5 direction=left>
+            <div class="nmu1-item">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            <img  src="images/scene1/3.png" alt="">
+            </div>
+            <br>
+            <div class="danmu1-item" >
+              <span>
+                高能预警
+                <img  src="images/scene3/3.png" alt=""direction=left>
+                <img  src="images/scene3/3.png" alt=""direction=left>
+              </span>
+            </div>
+          </marquee>
+
+          <marquee class="danmu1-item"   scrollAmount=6 loop="2" direction=left>
+            <div class="danmu">
+              <img  src="images/scene1/4.png" alt="">
+              <img  src="images/scene1/4.png" alt="">
+              <img  src="images/scene1/4.png" alt="">
+            </div>
+            <br />
+          </marquee>
+    
+          <marquee class="danmu1-item"  scrollAmount=7 loop="2" direction=left>
+            <div class="danmu">
+              我在清华大学美术学院a座
+              <img  src="images/scene1/4.png" alt="">
+            </div>
+            <br />
+          </marquee>
+    
+          <marquee class="danmu1-item" scrollAmount=8  direction=left> 
+            <div class="danmu">
+              你好你好你好!
+              <img  src="images/scene1/1.png" alt="">
+            </div>
+            <div class="danmu"> 
+              这个作品真棒
+              <img  src="images/scene1/1.png"style="height: 65px;" alt="">
+            </div>
+            <br />
+          </marquee>
+        </div>
+
+        <div >
+          <img  id="protect1" src="images/scene3/1-1.png" alt="">
+        </div>
+        <div id="protect2" >
+          <img  style="display:none"id="protect2"  src="images/scene3/1-2.png" alt="">
+        </div>
+  
+  
+        <div id="protectButton"  >
+          <div id="circle1">
+            OFF
+            <img  id="protect1" src="images/scene3/1-1.png" alt="">
+  
+          </div>
+          
+          <span class="text">保护模式</span>
+          <!-- <span class="text">模式</span> -->
+          
+          <!-- <div >
+            <img  id="protect1" src="images/scene3/1-1.png" alt="">
+          </div>
+          <div style="display:none"id="protect2" >
+            <img  style="display:none"id="protect2"  src="images/scene3/1-2.png" alt="">
+          </div> -->
+          <!-- 点击替换图片css -->
+    
+          <!-- <img src="images/scene3/1.png" alt=""> -->
+        </div>
+  
+        <div id="circle2" style="display: none;">
+          ON
+          <img  style="display:none"id="protect2"  src="images/scene3/1-2.png" alt="">
+        </div>
+        <!-- <div >
+          
+          <img  id="protect1" src="images/scene3/1-1.png" alt="">
+        </div> -->
+        <div style="display:none"id="protect2" >
+          <img  style="display:none"id="protect2"  src="images/scene3/1-2.png" alt="">
+        </div>
+  
+  
+  
+  
+  
+        <div class="blalckMask"  >
+            打开按钮试试吧
+        </div>
+        <!--两种方向 -->
+  
+        <!-- 竖向 -->
+        <div id="protectHands">
+          <div id="protectLeft">
+            <img src="images/scene3/left.png" alt="">S
+          </div>
+            <!-- 右手-->
+          <div id="protectright"  >
+            <img src="images/scene3/right.png" alt="">
+          </div>
+        </div>
+  
+          <!-- 横向 -->
+        <div id="protectHands2" >
+          <div id="protectLeft1" >
+            <img src="images/scene3/left1.png" alt="">
+          </div>
+            <!-- 右手-->
+          <div id="protectright1">
+            <img src="images/scene3/right1.png" alt="">
+          </div>
+        </div>       
+      </div>  
+    
+      <!-- 场景4 -->
+      <div id="part4"style="display:none" >
+        <div id="quitBox">
+          <div id="countdown">
+            <span></span>
+          </div>
+          <div id="quit" onclick="closeAngryBox">
+            <span>退出通道模式</span>
+          </div>
+         
+            
+         
+          
+        </div>
+        <!-- 默认弹幕 -->
+
+        <div class="danmuBox" style="position: relative;display:none" >
+          <marquee class="danmu1-item"  scrollAmount=5 direction=left>
+            <div class="danmu">
+            <img  src="images/scene4/4.png" alt="">
+            <img  src="images/scene4/4.png" alt="">
+            <img  src="images/scene4/4.png" alt="">
+            </div>
+            <br>
+            <div class="danmu">
+              <span>
+               高能预警！
+                <img  src="images/scene4/5.png" alt=""direction=left>
+              </span>
+            </div>
+            <div class="danmu" id="entrance">
+                <img  src="images/scene4/9.png" alt=""direction=left>
+            </div>
+          </marquee>
+          <marquee class="danmu1-item"  scrollAmount=5 direction=left>
+            <div class="danmu">
+              <span>
+                <img  src="images/scene4/9.png" alt=""direction=left>
+              </span>
+            </div>
+          </marquee>
+        </div>
+
+        <!-- 通道音效遮罩，遮罩后弹幕消失 -->
+        <video style="display: none" src="/"></video>
+        <!-- 倒计时，退出左上角提示栏 -->
+
+
+        <!-- ready go -->
+        
+        
+        <div id="readyBox">
+          <div id="ready">
+            <img src="images/scene4/ready.png" alt="">
+          </div>
+          <div id="go">
+            <img src="images/scene4/go.png" alt="">
+          </div>
+          <audio src="/"></audio>
+        </div>
+
+
+        <!-- 右侧栏 -->
+
+        <div id="rightBox">
+          <div id="tomato">
+            <img src="images/scene4/1.png" alt="">
+            <span>烂番茄</span>
+          </div>
+          <div id="egg">
+            <img src="images/scene4/2.png" alt="">
+            <span>臭鸡蛋</span>
+          </div>
+          <div id="boom">
+            <img src="images/scene4/3.png" alt="">
+            <span>炸弹</span>
+          </div>
+        </div>
+        <div id="boomImg">
+          <img src="/" alt="">
+        </div>
+      </div>
+      <!-- 场景5 -->
+      <!-- 发送弹幕并存档 -->
+      <div id="part5"contenteditable="true"style="display:none" >
+        <div id="sendMessages">
+          <input type="text" placeholder='写下你对本作品的看法吧'id="something" autocomplete="off">
+          <button style="color:orange;font-size:20px;margin-right:20px;" onClick="saySomething()">
+            发送
+          </button>
+        </div>  
+      <!-- <button style="color:purple;font-size:20px;margin-left:20px" onClick="doClear()">清屏</button> -->
+
+      </div>
+    </div>
+  </div>
+        
+        
+        
+  
+   
+          
+         <!-- 弹幕方案二   -->
+       <!-- 等待5-10s -->
+       <!-- 字体苹方-简 中黑体待下载 -->
+       
+        <!-- style="position:absolute;width:100%;height:100%;"  -->
+  
+        <!-- <div style="margin-top:20px;position:relative;"></div>
+        <div id="defaultDanmu"  style="position:absolute;background-color: red;font-size: 35px;color: #FFFFFF;">
+          jquery弹幕数组替换
+          <img src="images/scene1/1.png" alt="">
+        </div> -->
+  
+
+
+
+
+
+  <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
+  <script src="js/velocity.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/velocity.ui.min.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="js/velocity.js"></script> -->
+  <!-- <script type="text/javascript" src="dist/js/jquery.barrager.js"></script> -->
+  <script>
+
+
+
+    //访问摄像头
+    const video = document.getElementById('camera');
+    const loopVideo = document.getElementById('loopVideo');
+    const mask= document.getElementById('mask');
+    const width =loopVideo.width;
+    const height =loopVideo.height;
+    let isMoveFlag = true ; // 鼠标移动
+    let closeCarmertimer = null ;  // 摄像头打开以后，是否需要关闭标识符
+
+    // 点击打开摄像头
+    loopVideo.addEventListener('click',function () {
+      getUserMedia()
+    })
+
+
+
+
+    //监听播放时间
+    //使用事件监听方式捕捉事件
+    var part1=document.querySelector('#part1');
+    var part2=document.querySelector('#part2');
+    var part3=document.querySelector('#part3');
+    var part4=document.querySelector('#part4');
+    var part5=document.querySelector('#part5');
+    var showCountDownID = ''
+    // video.addEventListener("timeupdate",function(){
+    //   console.log(3333)
+    //     var timeDisplay;
+    // 	//用秒数来显示当前播放进度
+    // 	timeDisplay = Math.floor(video.currentTime);
+    // 	console.log(Math.floor(video.currentTime))
+    //     //当视频播放到 1s的时候做处理
+    // 	if(timeDisplay >=1&&timeDisplay <=15){
+    // 	        //处理代码
+    //           //part1
+    //       part1.style.display="block";
+    //       // part4
+    //       part4.style.display='block';
+    //       var quit=document.querySelector('#quit')
+    //       quit.addEventListener('click',function () {
+    //         closeAngryBox();
+    // })
+    //     showCountDownID = setInterval("showCountDown()", 1000);
+    // 	}
+    // },false);
+    // 打开视频第一步
+    function part1Start(){
+      part1.style.display="block";
+          // part4
+      // part4.style.display='block';
+      var quit=document.querySelector('#quit')
+      quit.addEventListener('click',function () {
+        closeAngryBox();
+      })
+      showCountDownID = setInterval("showCountDown()", 1000);
+    }
+
+    var mediaStreamTrack;
+    carmerState1 =0;
+    
+    function getUserMedia(){
+      navigator.getMedia = navigator.getUserMedia ||
+                   navagator.webkitGetUserMedia ||
+                   navigator.mozGetUserMedia ||
+                   navigator.msGetUserMedia;
+      navigator.getMedia({
+        video: {width: width, height: height} //使用摄像头对象
+      }, success, error)
+      
+    }
+
+
+    function success(stream) {
+      // 清空定时器
+      clearInterval(closeCarmertimer)
+        video.srcObject = stream;
+          mediaStreamTrack = stream;
+          // 摄像头状态 ，已经被打开
+          carmerState1 =1;
+          video.play();
+          loopVideo.pause();
+          video.style.display='';
+        
+          loopVideo.style.display='none';
+          video.load();
+          // 打开part1
+          part1Start()
+          // 5s后关闭part1
+          setTimeout(() => {
+            part1.style.display="none";
+            part2.style.display="block";
+          }, 6000);
+          setTimeout(() => {
+            part2.style.display="none";
+            part3.style.display="block";
+          }, 10000);
+          setTimeout(() => {
+            part3.style.display="none";
+            part4.style.display="block";
+          }, 15000);
+          setTimeout(() => {
+            part4.style.display="none";
+            part5.style.display="block";
+          }, 20000);
+          setTimeout(() => {
+            part5.style.display="none";
+          }, 25000);
+          // 监听鼠标是否移动
+          closeCarmertimer = setInterval(() => {
+            if(isMoveFlag ){
+              isMove()
+            }else{
+              clearInterval(closeCarmertimer)
+            }
+          }, 1000);
+      }
+      function error(error) {
+          console.log(error);
+      };
+
+      function isMove(){
+        timer = null;
+        window.onmousemove = function(){
+            // 移动时
+            isMoveFlag = true;
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+               // 静止后
+              closeMedia()
+              isMoveFlag = false;
+            },8000); //10s
+        }
+      }
+
+    
+     function drawCanvasImage() {
+         const canvas = document.getElementById('canvas');
+         canvas.width = width;
+         canvas.height = height;
+         const context = canvas.getContext('2d');
+         context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
+         //获取图片，数据格式为base64
+         const imageData = canvas.toDataURL("image/png");
+         console.log(imageData)
+     }
+   
+
+    function closeMedia() {
+        mediaStreamTrack.getTracks()[0].stop(); //关闭摄像头
+        loopVideo.play();
+        loopVideo.style.display='block';
+        video.style.display='none';
+     }
+
+
+//场景1
+       
+    $(".danmu2-item").click(function(){
+      //限制添加盒子数量
+      // let a= document.querySelector('.danmu2-item')
+      
+       addEmotions();
+     })
+     //点击图片发送图片
+       var htmlToAdd ="";
+       function addEmotions(){
+       htmlToAdd = $(".emotion").html();
+       $(".emotion").html($(".emotion").html()+htmlToAdd );
+     }
+    
+
+
+    // 场景2
+
+// 抖动效果
+// $("#boom").shake(2, 10, 400);
+
+jQuery.fn.shake = function (intShakes /*Amount of shakes*/, intDistance /*Shake distance*/, intDuration /*Time duration*/) {
+    this.each(function () {
+        var jqNode = $(this);
+        jqNode.css({ position: 'relative' });
+        for (var x = 1; x <= intShakes; x++) {
+            jqNode.animate({ left: (intDistance * -1) }, (((intDuration / intShakes) / 4)))
+            .animate({ left: intDistance }, ((intDuration / intShakes) / 2))
+            .animate({ left: 0 }, (((intDuration / intShakes) / 4)));
+        }
+    });
+    return this;
+}
+    // $('#greenButton').animate({rigt:800},500)
+// 点击绿头提示
+    // velocity左右晃动 动画
+
+  //   $("#greenButton").mouseover(function(){
+	// 	$(this).velocity("callout.bounce",1000);//1秒完成callout.bounce动画
+	// });
+
+  // 点击后移除动画效果
+
+
+
+// 场景4
+
+//倒计时 ,显示右侧栏的时候放入调用,30s后记得清空计时器，打开页面需要赋值
+      var count= document.getElementById('countdown');       
+      var maxtime =30;  
+      function showCountDown() {
+            if (maxtime >= 0) {
+              seconds = Math.floor(maxtime);
+              msg = seconds + "S";
+              count.innerHTML = msg;
+              // 倒计时完成后退出时判断
+              if (maxtime >0){
+                --maxtime;        
+                } else{
+                  part4.style.display='none';
+                  clearInterval(showCountDownID);
+               }
+           }
+      }       
+      // console.log(maxtime);
+      function closeAngryBox(){
+          //  点击退出后，没到30s打开画面1
+        if (maxtime >0){
+          part4.style.display='none';
+          part4.style.display='block'; 
+          clearInterval(timer);
+        }
+      }
+
+
+      // 爆炸随机播放
+      var imgArr=['images/scene4/boom1.gif','images/scene4/boom1.gif','images/scene4/boom3.gif']
+      var randomImg = Math.floor((Math.random() * imgArr.length));
+      // document.getElementById("#boomImg").src = imgArr[randomNum];
+      function star(event){
+			// （创建img标签）
+			var img = document.createElement('img');
+			//将图片引入
+			img.src =  imgArr[randomNum];
+			//设置大小
+			img.width =Math.floor(Math.random()*(300-100) + 100);
+
+      
+			//设置xy
+			var x = event.clientX;
+			var y = event.clientY;
+			// 将图片定位到鼠标点击的位置
+			img.style.position = 'absolute';
+			img.style.top=y+'px';
+			img.style.left=x+'px';
+			// 将图片插入body里面
+			document.body.appendChild(img);
+
+		}
+    
+
+
+//场景5
+
+      //弹幕
+      function danmu(item){
+        $('body').barrager(item);
+      }
+
+      var t=0;
+      var list=['1','2','3','4','5','6','7','8'];
+      var diff=20;  //相邻弹幕高度差
+      var _height=10;  //弹幕初始高度
+      function saySomething(){    //发送button的绑定事件
+        var something = document.getElementById("something").value;
+        document.getElementById("something").value = "";
+        list.push("'"+something+"'");
+        senddanmu(something);
+        setTimeout("danmu()",500);
+      }
+
+      $(document).ready(function(){
+            danmu();//发默认弹幕
+      });
+      $(document).ready(function(){
+        senddanmu();//发默认弹幕
+      });
+
+
+      function senddanmu(val){     //发送单条弹幕
+        var item_t = "<div style='position:absolute;background-color: red;font-size:28px;color:#fff"+";right:0px;top:"+_height+"px;'>"+val+"</div>";
+            $(".part5").append($(item_t));
+            var item = $(".part5").children()[$(".part5").children().length - 1];
+            $(item).animate({left:'10px'},10000,function(){
+              $(this).remove();
+            });
+            //console.log(item);
+            _height = _height + diff;
+            // console.log($(".screen").height());
+            // console.log(_height);
+            if(_height > $(".screen").height()){
+              _height = 20;
+            } 
+      }
+
+
+      function danmu(){     //发送弹幕列表list
+        //使用setTimeout实现时间间隔
+        if(list){
+          for(var i = 0; i<list.length;i++){
+            console.log(list.length);
+            t = setTimeout("senddanmu("+list[i]+")",i*800);
+          } 
+        }
+        // // 使用setInterval实现时间间隔
+        // var i = 0;
+        // t = setInterval(function(){
+        //   senddanmu(list[i]);
+        //   i++;
+        //   if(i > list.length - 1){
+        //     clearInterval(t);
+        //   }
+        // },2000);
+      }
+
+
+  </script>
+ 
+
+</body>
+</html>
